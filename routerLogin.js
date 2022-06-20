@@ -5,6 +5,7 @@ const validator = require('validator');
 const router = express.Router();
 
 const loginList = [];
+const tokenList = [];
 
 const validateLogin = (req, res, next) => {
   const { email, password } = req.body;
@@ -27,11 +28,12 @@ const validateLogin = (req, res, next) => {
 
 router.post('/', validateLogin, (req, res) => {
   const { email, password } = req.body;
-  loginList.push({ email, password });
   const token = crypto.randomBytes(8).toString('hex');
+  loginList.push({ email, password, token });
   res.status(200).json({ token });
 });
 
 console.log(loginList);
 
 module.exports = router;
+exports.tokenList = tokenList;
