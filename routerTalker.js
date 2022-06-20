@@ -77,6 +77,19 @@ router.route('/:id')
         next(err);
       }
     },
-  );
+  )
+  .delete(tokenValidation, async (req, res, next) => {
+    try {
+      const { id } = req.params;
+
+      const talkerList = JSON.parse(await fs.readFile(talker, 'utf8'));
+      const newList = talkerList.filter((item) => +item.id !== +id);
+
+      await fs.writeFile(talker, JSON.stringify(newList));
+      res.status(204).end();
+    } catch (err) {
+      next(err);
+    }
+  });
 
 module.exports = router;
