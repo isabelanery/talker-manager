@@ -9,6 +9,7 @@ const {
 const router = express.Router();
 
 const talker = './talker.json';
+
 router.route('/')
   .get(async (_req, res, next) => {
     try {
@@ -39,6 +40,22 @@ router.route('/')
     }
   },
   ); 
+
+router.get('/search', 
+tokenValidation,
+async (req, res, next) => {
+  try {
+    const { q: name } = req.query;
+    const talkerList = JSON.parse(await fs.readFile(talker, 'utf8'));
+    const filterList = talkerList.filter((e) => e.name.includes(name));
+
+    if (!name || name === '') return res.status(200).send(talkerList);
+
+    res.status(200).json(filterList);
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.route('/:id')
   .get(async (req, res, next) => {

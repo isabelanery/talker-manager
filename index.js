@@ -4,7 +4,6 @@ const cors = require('cors');
 const errorMiddleware = require('./errorMiddleware.js');
 const talkerRouter = require('./routerTalker.js');
 const loginRouter = require('./routerLogin.js');
-// const fs = require('fs');
 
 const app = express();
 app.use(bodyParser.json(), cors());
