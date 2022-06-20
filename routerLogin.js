@@ -33,7 +33,5 @@ router.post('/', validateLogin, (req, res) => {
   res.status(200).json({ token });
 });
 
-console.log(loginList);
-
 module.exports = router;
 exports.tokenList = tokenList;
