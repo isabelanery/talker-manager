@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const errorMiddleware = require('./errorMiddleware.js');
-const talkerRouter = require('./routerTalker.js');
-const loginRouter = require('./routerLogin.js');
+const errorMiddleware = require('./middlewares/errorMiddleware.js');
+const talkerRouter = require('./routers/routerTalker.js');
+const loginRouter = require('./routers/routerLogin.js');
 
 const app = express();
 app.use(bodyParser.json(), cors());

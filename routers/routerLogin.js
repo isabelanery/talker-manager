@@ -5,7 +5,6 @@ const validator = require('validator');
 const router = express.Router();
 
 const loginList = [];
-const tokenList = [];
 
 const validateLogin = (req, res, next) => {
   const { email, password } = req.body;
@@ -34,4 +33,4 @@ router.post('/', validateLogin, (req, res) => {
 });
 
 module.exports = router;
-exports.tokenList = tokenList;
+exports.loginList = loginList;

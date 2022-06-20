@@ -4,7 +4,7 @@ const {
   tokenValidation,
   validateTalker,
   validateTalk,
-  validateRate } = require('./validationMiddlewares.js');
+  validateRate } = require('../middlewares/validationMiddlewares.js');
 
 const router = express.Router();
 
